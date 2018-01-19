@@ -190,6 +190,10 @@ function _pinParticipant(store, next, action) {
     const participantById = getParticipantById(participants, id);
     let pin;
 
+    if (typeof conference === 'undefined') {
+        return next(action);
+    }
+
     if (typeof APP !== 'undefined') {
         const pinnedParticipant = getPinnedParticipant(participants);
         const actionName
